@@ -4,6 +4,7 @@ public class Game {
     private String name;
     private int yearOfRelease;
     private boolean isFavorite;
+    private String cheats;
 
     public Game(){
         name = "asdf";
@@ -39,5 +40,13 @@ public class Game {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCheats() {
+        return cheats;
+    }
+
+    public void setCheats(String cheats) {
+        this.cheats = cheats;
     }
 }
