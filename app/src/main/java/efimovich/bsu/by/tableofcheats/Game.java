@@ -18,6 +18,13 @@ public class Game {
         this.isFavorite = isFavorite;
     }
 
+    public Game(String name, int yearOfRelease, boolean isFavorite, String cheats){
+        this.name = name;
+        this.yearOfRelease = yearOfRelease;
+        this.isFavorite = isFavorite;
+        this.cheats = cheats;
+    }
+
     public boolean isFavorite() {
         return isFavorite;
     }
