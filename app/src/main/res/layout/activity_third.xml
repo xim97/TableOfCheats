@@ -6,10 +6,44 @@
     android:layout_height="match_parent"
     tools:context="efimovich.bsu.by.tableofcheats.ThirdActivity">
 
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/addButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onClickAddButton"
+            android:text="@string/add"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/gamesButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onClickGamesButton"
+            android:text="@string/games"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/favoritesButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onClickFavoritesButton"
+            android:text="@string/favorites"
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Third Activity"
+        android:text="Favorite Activity"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
