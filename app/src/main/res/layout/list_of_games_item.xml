@@ -2,20 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:paddingRight="5sp">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_weight="10"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingLeft="10sp">
 
         <TextView
             android:id="@+id/nameView"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="Call of Duty: Infinity Warfare"
             android:textSize="18sp" />
 
         <TextView
@@ -23,17 +24,15 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="1000"
             android:textSize="18sp" />
 
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/favoriteButton"
+    <CheckBox
+        android:id="@+id/favoriteCheckBox"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="+"/>
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
 
 </LinearLayout>

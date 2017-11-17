@@ -37,6 +37,10 @@ public class Game {
         return yearOfRelease;
     }
 
+    public String getYearOfReleaseByString(){
+        return Integer.valueOf(yearOfRelease).toString();
+    }
+
     public void setYearOfRelease(int yearOfRelease) {
         this.yearOfRelease = yearOfRelease;
     }
