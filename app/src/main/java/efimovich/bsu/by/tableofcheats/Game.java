@@ -1,28 +1,42 @@
 package efimovich.bsu.by.tableofcheats;
 
-public class Game {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Game implements Parcelable {
     private String name;
     private int yearOfRelease;
     private boolean isFavorite;
     private String cheats;
 
-    public Game(){
+    public Game() {
         name = "asdf";
         yearOfRelease = 1000;
         isFavorite = false;
     }
 
-    public Game(String name, int yearOfRelease, boolean isFavorite){
+    public Game(String name, int yearOfRelease, boolean isFavorite) {
         this.name = name;
         this.yearOfRelease = yearOfRelease;
         this.isFavorite = isFavorite;
     }
 
-    public Game(String name, int yearOfRelease, boolean isFavorite, String cheats){
+    public Game(String name, int yearOfRelease, boolean isFavorite, String cheats) {
         this.name = name;
         this.yearOfRelease = yearOfRelease;
         this.isFavorite = isFavorite;
         this.cheats = cheats;
+    }
+
+    private Game(Parcel in) {
+        this.name = in.readString();
+        this.yearOfRelease = in.readInt();
+        this.isFavorite = in.readByte() != 0;
+        this.cheats = in.readString();
+    }
+
+    public int describeContents() {
+        return 0;
     }
 
     public boolean isFavorite() {
@@ -37,7 +51,7 @@ public class Game {
         return yearOfRelease;
     }
 
-    public String getYearOfReleaseByString(){
+    public String getYearOfReleaseByString() {
         return Integer.valueOf(yearOfRelease).toString();
     }
 
@@ -60,4 +74,21 @@ public class Game {
     public void setCheats(String cheats) {
         this.cheats = cheats;
     }
+
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeString(name);
+        out.writeInt(yearOfRelease);
+        out.writeByte((byte) (isFavorite ? 1 : 0));
+        out.writeString(cheats);
+    }
+
+    public static final Parcelable.Creator<Game> CREATOR = new Parcelable.Creator<Game>() {
+        public Game createFromParcel(Parcel in) {
+            return new Game(in);
+        }
+
+        public Game[] newArray(int size) {
+            return new Game[size];
+        }
+    };
 }
