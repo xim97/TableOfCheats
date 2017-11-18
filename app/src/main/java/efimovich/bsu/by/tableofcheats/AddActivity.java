@@ -4,17 +4,21 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ListView;
 
-public class SecondActivity extends AppCompatActivity {
+import java.util.ArrayList;
+
+public class AddActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second);
+        setContentView(R.layout.activity_add);
+
     }
 
     public void onClickAddButton(View view) {
-        Intent intent = new Intent(this, SecondActivity.class);
+        Intent intent = new Intent(this, AddActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
     }
@@ -26,7 +30,7 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     public void onClickFavoritesButton(View view) {
-        Intent intent = new Intent(this, ThirdActivity.class);
+        Intent intent = new Intent(this, FavoriteActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
     }

@@ -1,12 +1,15 @@
 package efimovich.bsu.by.tableofcheats;
 
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,10 +45,35 @@ public class GameAdapter extends ArrayAdapter<Game> {
 
         viewHolder.favoriteCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Toast toast = Toast.makeText(getContext(), game.getName() + " was set " + !game.isFavorite(), Toast.LENGTH_SHORT);
-                toast.show();
-                game.setFavorite(!game.isFavorite());
+            public void onClick(View view) {
+                if (!viewHolder.favoriteCheckBox.isChecked()) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+
+                    builder.setMessage(R.string.dialog_message)
+                            .setTitle(R.string.dialog_title);
+
+                    builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            game.setFavorite(false);
+                            Toast toast = Toast.makeText(getContext(), "" + game.isFavorite(), Toast.LENGTH_SHORT);
+
+                            toast.show();
+                        }
+                    });
+
+                    builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            viewHolder.favoriteCheckBox.setChecked(true);
+                            game.setFavorite(true);
+                            Toast toast = Toast.makeText(getContext(), "" + game.isFavorite(), Toast.LENGTH_SHORT);
+
+                            toast.show();
+                        }
+                    });
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
             }
         });
 
