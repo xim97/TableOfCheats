@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +26,7 @@ public class GameAdapter extends ArrayAdapter<Game> {
         this.inflater = LayoutInflater.from(context);
     }
 
-    public View getView(int position, View convertView, final ViewGroup parent) {
+    public View getView(final int position, View convertView, final ViewGroup parent) {
 
         final ViewHolder viewHolder;
         if (convertView == null) {
@@ -54,9 +53,8 @@ public class GameAdapter extends ArrayAdapter<Game> {
 
                     builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            game.setFavorite(false);
+                            game.setFavorite(!game.isFavorite());
                             Toast toast = Toast.makeText(getContext(), "" + game.isFavorite(), Toast.LENGTH_SHORT);
-
                             toast.show();
                         }
                     });
@@ -64,15 +62,15 @@ public class GameAdapter extends ArrayAdapter<Game> {
                     builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             viewHolder.favoriteCheckBox.setChecked(true);
-                            game.setFavorite(true);
                             Toast toast = Toast.makeText(getContext(), "" + game.isFavorite(), Toast.LENGTH_SHORT);
-
                             toast.show();
                         }
                     });
 
                     AlertDialog dialog = builder.create();
                     dialog.show();
+                } else {
+                    game.setFavorite(!game.isFavorite());
                 }
             }
         });

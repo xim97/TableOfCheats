@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -17,12 +18,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (savedInstanceState == null || !savedInstanceState.containsKey("games")) {
+        if (savedInstanceState != null && savedInstanceState.containsKey("games")) {
+            games = savedInstanceState.getParcelableArrayList("games");
+            Toast toast = Toast.makeText(this, "getParcelableArrayList", Toast.LENGTH_SHORT);
+            toast.show();
+        } else {
             for (int i = 0; i < 100; i++) {
                 games.add(new Game("game" + i, i * 1000, i % 2 == 0));
             }
-        } else {
-            games = savedInstanceState.getParcelableArrayList("games");
         }
 
         gameList = findViewById(R.id.gamesList);
