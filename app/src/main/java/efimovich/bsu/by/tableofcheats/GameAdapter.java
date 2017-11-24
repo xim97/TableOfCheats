@@ -48,8 +48,8 @@ public class GameAdapter extends ArrayAdapter<Game> {
                 if (!viewHolder.favoriteCheckBox.isChecked()) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
-                    builder.setMessage(R.string.dialog_message)
-                            .setTitle(R.string.dialog_title);
+                    builder.setMessage(R.string.remove_favorite_dialog_message)
+                            .setTitle(R.string.remove_favorite_dialog_title);
 
                     builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {

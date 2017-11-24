@@ -4,11 +4,13 @@
     <string name="add">Добавить</string>
     <string name="games">Игры</string>
     <string name="favorites">Избранные</string>
-    <string name="dialog_title">Удаление</string>
     <string name="ok">ОК</string>
     <string name="cancel">Отмена</string>
-    <string name="dialog_message">Вы уверены, что хотите удалить игру из избранных?</string>
     <string name="cheats">Читы</string>
     <string name="name">Название</string>
     <string name="year">Год выхода</string>
+    <string name="add_cheats_dialog_message">Вы уверены, что хотите добавить читы к приложению?</string>
+    <string name="remove_favorite_dialog_message">Вы уверены, что хотите удалить игру из избранных?</string>
+    <string name="remove_favorite_dialog_title">Удаление из избранных</string>
+    <string name="add_cheats_dialog_title">Предупреждение</string>
 </resources>
