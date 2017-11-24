@@ -8,4 +8,6 @@
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="cheats">Cheats</string>
+    <string name="name">Name</string>
+    <string name="year">Release year</string>
 </resources>

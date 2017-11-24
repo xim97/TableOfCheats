@@ -9,4 +9,6 @@
     <string name="cancel">Отмена</string>
     <string name="dialog_message">Вы уверены, что хотите удалить игру из избранных?</string>
     <string name="cheats">Читы</string>
+    <string name="name">Название</string>
+    <string name="year">Год выхода</string>
 </resources>
