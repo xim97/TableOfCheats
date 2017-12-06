@@ -29,7 +29,16 @@ public class AddActivity extends AppCompatActivity {
 
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-
+                EditText nameEdit = findViewById(R.id.nameEdit);
+                EditText yearEdit = findViewById(R.id.yearEdit);
+                EditText cheatsEdit = findViewById(R.id.cheatsEdit);
+                if (!checkEdits(nameEdit, yearEdit, cheatsEdit)){
+                    Toast toast = Toast.makeText(getBaseContext(), R.string.adding_cheats, Toast.LENGTH_SHORT);
+                    toast.show();
+                } else {
+                    Toast toast = Toast.makeText(getBaseContext(), R.string.error_input_cheats, Toast.LENGTH_SHORT);
+                    toast.show();
+                }
             }
         });
 
@@ -41,6 +50,12 @@ public class AddActivity extends AppCompatActivity {
 
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    public boolean checkEdits(EditText nameEdit, EditText yearEdit, EditText cheatsEdit){
+        return nameEdit.getText().toString().trim().isEmpty()
+                || yearEdit.getText().toString().trim().isEmpty()
+                || cheatsEdit.getText().toString().trim().isEmpty();
     }
 
     public void onClickMusicButton(View view) {

@@ -64,18 +64,21 @@
         </LinearLayout>
 
         <EditText
+            android:id="@+id/nameEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="@string/name" />
 
         <EditText
+            android:id="@+id/yearEdit"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:hint="@string/year" />
 
         <EditText
+            android:id="@+id/cheatsEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

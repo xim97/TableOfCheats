@@ -21,10 +21,8 @@ public class FavoriteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setTitle(R.string.favorites);
         setContentView(R.layout.activity_favorite);
-        Log.d("TAG", "creating Favorite activity");
-        favoriteGames = getIntent().getParcelableArrayListExtra("favoriteGamesFromMainActivity");
         if (savedInstanceState == null || !savedInstanceState.containsKey("favoriteGames")) {
-
+            favoriteGames = getIntent().getParcelableArrayListExtra("favoriteGamesFromMainActivity");
         } else {
             favoriteGames = savedInstanceState.getParcelableArrayList("favoriteGames");
         }

@@ -56,7 +56,8 @@ public class GameAdapter extends ArrayAdapter<Game> {
                     builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             game.setFavorite(!game.isFavorite());
-                            Toast toast = Toast.makeText(getContext(), game.getName() + "is favorite:" + game.isFavorite(), Toast.LENGTH_SHORT);
+                            Toast toast = Toast.makeText(getContext(), game.getName() + " " +
+                                    getContext().getString(R.string.unmarked_as_favorite), Toast.LENGTH_SHORT);
                             toast.show();
                         }
                     });
@@ -64,7 +65,8 @@ public class GameAdapter extends ArrayAdapter<Game> {
                     builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             viewHolder.favoriteCheckBox.setChecked(true);
-                            Toast toast = Toast.makeText(getContext(), game.getName() + "is favorite:" + game.isFavorite(), Toast.LENGTH_SHORT);
+                            Toast toast = Toast.makeText(getContext(), game.getName() + " " +
+                                    getContext().getString(R.string.marked_as_favorite), Toast.LENGTH_SHORT);
                             toast.show();
                         }
                     });
@@ -72,9 +74,9 @@ public class GameAdapter extends ArrayAdapter<Game> {
                     AlertDialog dialog = builder.create();
                     dialog.show();
                 } else {
-                    Log.d("TAG", "setting " + game.getName() + "value " + !game.isFavorite());
                     game.setFavorite(!game.isFavorite());
-                    Toast toast = Toast.makeText(getContext(), game.getName() + "is favorite:" + game.isFavorite(), Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getContext(), game.getName() + " " +
+                            getContext().getString(R.string.marked_as_favorite), Toast.LENGTH_SHORT);
                     toast.show();
                 }
             }

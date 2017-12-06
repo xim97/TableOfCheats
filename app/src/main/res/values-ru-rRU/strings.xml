@@ -15,4 +15,8 @@
     <string name="add_cheats_dialog_title">Предупреждение</string>
     <string name="music_button_start">Старт трека</string>
     <string name="music_button_stop">Стоп трека</string>
+    <string name="marked_as_favorite">отмечена как избранная.</string>
+    <string name="unmarked_as_favorite">снята отметка избранное.</string>
+    <string name="error_input_cheats">Вы не заполнили все поля.</string>
+    <string name="adding_cheats">Игра была добавлена.</string>
 </resources>
