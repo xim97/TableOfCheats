@@ -21,7 +21,7 @@ public class AddActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(R.string.add);
     }
 
-    public void onClickAddCheatsButton(View view){
+    public void onClickAddCheatsButton(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         builder.setMessage(R.string.add_cheats_dialog_message)
@@ -41,6 +41,16 @@ public class AddActivity extends AppCompatActivity {
 
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    public void onClickMusicButton(View view) {
+        Intent intent = new Intent(this, MusicService.class);
+        if (view.getId() == R.id.musicButtonStart){
+            startService(intent);
+        }
+        else{
+            stopService(intent);
+        }
     }
 
     public void onClickAddButton(View view) {

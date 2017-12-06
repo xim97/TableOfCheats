@@ -12,4 +12,6 @@
     <string name="year">Release year</string>
     <string name="add_cheats_dialog_message">Are you sure to add this cheats to application</string>
     <string name="add_cheats_dialog_title">Warning</string>
+    <string name="music_button_start">Start track</string>
+    <string name="music_button_stop">Stop track</string>
 </resources>

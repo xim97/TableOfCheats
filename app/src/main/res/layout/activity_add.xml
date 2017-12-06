@@ -33,6 +33,34 @@
                 android:text="@string/games"
                 android:textSize="20sp" />
 
+
+        </LinearLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/musicButtonStart"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="onClickMusicButton"
+                android:text="@string/music_button_start"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/musicButtonStop"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="onClickMusicButton"
+                android:text="@string/music_button_stop"
+                android:textSize="20sp" />
+
+
         </LinearLayout>
 
         <EditText

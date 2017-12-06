@@ -18,7 +18,12 @@
         </activity>
         <activity android:name=".AddActivity" />
         <activity android:name=".FavoriteActivity" />
-        <activity android:name=".CheatsActivity"></activity>
+        <activity android:name=".CheatsActivity" />
+
+        <service
+            android:name=".MusicService"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>
