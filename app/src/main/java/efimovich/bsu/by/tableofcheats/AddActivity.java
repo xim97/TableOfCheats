@@ -25,7 +25,7 @@ public class AddActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         builder.setMessage(R.string.add_cheats_dialog_message)
-                .setTitle(R.string.add_cheats_dialog_title);
+                .setTitle(R.string.add);
 
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
@@ -57,7 +57,7 @@ public class AddActivity extends AppCompatActivity {
 
     public void onClickFavoritesButton(View view) {
         Intent intent = new Intent(this, FavoriteActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
     }
 }

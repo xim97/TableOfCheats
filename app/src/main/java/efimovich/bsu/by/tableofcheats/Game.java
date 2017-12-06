@@ -31,7 +31,7 @@ public class Game implements Parcelable {
     private Game(Parcel in) {
         this.name = in.readString();
         this.yearOfRelease = in.readInt();
-        this.isFavorite = (in.readInt() == 0);
+        this.isFavorite = (in.readInt() != 0);
         this.cheats = in.readString();
     }
 

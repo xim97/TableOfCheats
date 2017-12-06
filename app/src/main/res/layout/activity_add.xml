@@ -10,6 +10,31 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/addButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="onClickAddButton"
+                android:text="@string/add"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/gamesButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="onClickGamesButton"
+                android:text="@string/games"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,8 +60,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="@string/add"
-            android:onClick="onClickAddCheatsButton"/>
+            android:onClick="onClickAddCheatsButton"
+            android:text="@string/add" />
     </LinearLayout>
 
 

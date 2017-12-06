@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import utils.GamesCollection;
+
 public class MainActivity extends AppCompatActivity {
     private ArrayList<Game> games = new ArrayList<>();
     private ListView gamesList;
@@ -24,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState != null && savedInstanceState.containsKey("games")) {
             games = savedInstanceState.getParcelableArrayList("games");
         } else {
-            for (int i = 0; i < 100; i++) {
-                games.add(new Game("game" + i, i * 1000, i % 2 == 0, "asdfasdf" + i));
+            for (int i = 0; i < 20; i++) {
+                games.add(new Game("game" + i, i * 1000, i == 3 || i == 0, "asdfasdf" + i));
             }
         }
 
@@ -71,7 +73,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickFavoritesButton(View view) {
         Intent intent = new Intent(this, FavoriteActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+       // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        ArrayList<Game> favoriteGamesToFavoriteActivity = GamesCollection.getFavoriteGames(games);
+        intent.putParcelableArrayListExtra("favoriteGamesFromMainActivity", favoriteGamesToFavoriteActivity);
         startActivity(intent);
     }
 

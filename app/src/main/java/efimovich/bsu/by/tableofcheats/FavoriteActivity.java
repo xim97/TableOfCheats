@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -20,14 +21,10 @@ public class FavoriteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setTitle(R.string.favorites);
         setContentView(R.layout.activity_favorite);
-        Game temp;
+        Log.d("TAG", "creating Favorite activity");
+        favoriteGames = getIntent().getParcelableArrayListExtra("favoriteGamesFromMainActivity");
         if (savedInstanceState == null || !savedInstanceState.containsKey("favoriteGames")) {
-            for (int i = 0; i < 100; i++) {
-                temp = new Game("game" + i, i * 1000, i % 2 == 0);
-                if (temp.isFavorite()) {
-                    favoriteGames.add(temp);
-                }
-            }
+
         } else {
             favoriteGames = savedInstanceState.getParcelableArrayList("favoriteGames");
         }
@@ -74,7 +71,7 @@ public class FavoriteActivity extends AppCompatActivity {
 
     public void onClickFavoritesButton(View view) {
         Intent intent = new Intent(this, FavoriteActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
     }
 }

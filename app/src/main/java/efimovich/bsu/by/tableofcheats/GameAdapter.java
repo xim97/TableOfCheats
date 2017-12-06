@@ -4,6 +4,7 @@ package efimovich.bsu.by.tableofcheats;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,6 +71,7 @@ public class GameAdapter extends ArrayAdapter<Game> {
                     AlertDialog dialog = builder.create();
                     dialog.show();
                 } else {
+                    Log.d("TAG", "setting " + game.getName() + "value " + !game.isFavorite());
                     game.setFavorite(!game.isFavorite());
                 }
             }
