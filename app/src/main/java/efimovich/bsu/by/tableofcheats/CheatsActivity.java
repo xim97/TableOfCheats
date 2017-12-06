@@ -21,7 +21,7 @@ public class CheatsActivity extends AppCompatActivity {
         textView.setText(currentGame.getYearOfReleaseByString());
 
         CheckBox checkBox = findViewById(R.id.favoriteCheckBox);
-        checkBox.setChecked(!currentGame.isFavorite());
+        checkBox.setChecked(currentGame.isFavorite());
 
         textView = findViewById(R.id.cheatsView);
         textView.setText(currentGame.getCheats());

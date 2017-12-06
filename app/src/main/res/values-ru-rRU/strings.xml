@@ -13,4 +13,6 @@
     <string name="remove_favorite_dialog_message">Вы уверены, что хотите удалить игру из избранных?</string>
     <string name="remove_favorite_dialog_title">Удаление из избранных</string>
     <string name="add_cheats_dialog_title">Предупреждение</string>
+    <string name="music_button_start">Старт трека</string>
+    <string name="music_button_stop">Стоп трека</string>
 </resources>
