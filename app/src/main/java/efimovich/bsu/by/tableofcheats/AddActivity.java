@@ -29,10 +29,16 @@ public class AddActivity extends AppCompatActivity {
                 EditText nameEdit = findViewById(R.id.nameEdit);
                 EditText yearEdit = findViewById(R.id.yearEdit);
                 EditText cheatsEdit = findViewById(R.id.cheatsEdit);
-                if (!checkEdits(nameEdit, yearEdit, cheatsEdit)) {
-                    sendGame(nameEdit, yearEdit, cheatsEdit);
-                    Toast toast = Toast.makeText(getBaseContext(), R.string.adding_cheats, Toast.LENGTH_SHORT);
-                    toast.show();
+                if (!isEmptyInput(nameEdit, yearEdit, cheatsEdit)) {
+                    if (isValideInput(yearEdit)){
+                        sendGame(nameEdit, yearEdit, cheatsEdit);
+                        Toast toast = Toast.makeText(getBaseContext(), R.string.adding_cheats, Toast.LENGTH_SHORT);
+                        toast.show();
+                    } else {
+                        Toast toast = Toast.makeText(getBaseContext(), R.string.unvalide_game, Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+
                 } else {
                     Toast toast = Toast.makeText(getBaseContext(), R.string.error_input_cheats, Toast.LENGTH_SHORT);
                     toast.show();
@@ -62,15 +68,19 @@ public class AddActivity extends AppCompatActivity {
         finish();
     }
 
-    public boolean checkEdits(EditText nameEdit, EditText yearEdit, EditText cheatsEdit) {
+    public boolean isEmptyInput(EditText nameEdit, EditText yearEdit, EditText cheatsEdit) {
+        return nameEdit.getText().toString().trim().isEmpty()
+                || yearEdit.getText().toString().trim().isEmpty()
+                || cheatsEdit.getText().toString().trim().isEmpty();
+    }
+
+    public boolean isValideInput(EditText yearEdit) {
         try {
             Integer year = Integer.parseInt(yearEdit.getText().toString().trim());
         } catch (NumberFormatException exception) {
             return false;
         }
-        return nameEdit.getText().toString().trim().isEmpty()
-                || yearEdit.getText().toString().trim().isEmpty()
-                || cheatsEdit.getText().toString().trim().isEmpty();
+        return true;
     }
 
     public void onClickAddButton(View view) {

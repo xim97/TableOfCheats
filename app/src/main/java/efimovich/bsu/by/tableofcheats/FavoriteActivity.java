@@ -10,8 +10,6 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import utils.GamesCollection;
-
 public class FavoriteActivity extends AppCompatActivity {
     private ArrayList<Game> favoriteGames = new ArrayList<>();
     private ListView favoriteGameList;
@@ -32,7 +30,7 @@ public class FavoriteActivity extends AppCompatActivity {
         setGameAdapter();
     }
 
-    private void setGameAdapter(){
+    private void setGameAdapter() {
         favoriteGameList = findViewById(R.id.favoriteGamesList);
         GameAdapter adapter = new GameAdapter(this, R.layout.list_of_games_item, favoriteGames);
         favoriteGameList.setAdapter(adapter);

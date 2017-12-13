@@ -20,4 +20,5 @@
     <string name="adding_cheats">The game was added</string>
     <string name="color_settings">Color settings</string>
     <string name="no_favorite_games">You havn\'t any favorite games.</string>
+    <string name="unvalide_game">Your input isn\'t valide.</string>
 </resources>

@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
         Collections.sort(games, new GamesComparator());
     }
