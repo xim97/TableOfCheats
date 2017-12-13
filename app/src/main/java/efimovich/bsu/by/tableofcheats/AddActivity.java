@@ -55,6 +55,7 @@ public class AddActivity extends AppCompatActivity {
         int year = Integer.valueOf(yearEdit.getText().toString().trim());
         String cheats = cheatsEdit.getText().toString().trim();
         Game game = new Game(name, year, cheats, getResources().getConfiguration().locale.getLanguage());
+
         Intent data = new Intent();
         data.putExtra(MainActivity.GAME, game);
         setResult(RESULT_OK, data);

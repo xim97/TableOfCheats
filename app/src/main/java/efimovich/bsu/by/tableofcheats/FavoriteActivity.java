@@ -10,6 +10,8 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import utils.GamesCollection;
+
 public class FavoriteActivity extends AppCompatActivity {
     private ArrayList<Game> favoriteGames = new ArrayList<>();
     private ListView favoriteGameList;
@@ -54,7 +56,6 @@ public class FavoriteActivity extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-
         favoriteGames = savedInstanceState.getParcelableArrayList("favoriteGames");
     }
 
