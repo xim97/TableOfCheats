@@ -2,7 +2,6 @@ package efimovich.bsu.by.tableofcheats;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.CheckBox;
 import android.widget.TextView;
 
 public class CheatsActivity extends AppCompatActivity {
@@ -20,11 +19,20 @@ public class CheatsActivity extends AppCompatActivity {
         textView = findViewById(R.id.yearView);
         textView.setText(currentGame.getYearOfReleaseByString());
 
-        CheckBox checkBox = findViewById(R.id.favoriteCheckBox);
-        checkBox.setChecked(currentGame.isFavorite());
-
         textView = findViewById(R.id.cheatsView);
-        textView.setText(currentGame.getCheats());
-
+        switch (getResources().getConfiguration().locale.getLanguage()) {
+            case "ru": {
+                textView.setText(currentGame.getCheatsRU());
+                break;
+            }
+            case "en": {
+                textView.setText(currentGame.getCheatsEN());
+                break;
+            }
+            default: {
+                textView.setText(currentGame.getCheatsEN());
+                break;
+            }
+        }
     }
 }

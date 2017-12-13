@@ -7,7 +7,8 @@ public class Game implements Parcelable {
     private String name;
     private int yearOfRelease;
     private boolean isFavorite;
-    private String cheats;
+    private String cheatsRU;
+    private String cheatsEN;
 
     public Game() {
         name = "asdf";
@@ -21,18 +22,20 @@ public class Game implements Parcelable {
         this.isFavorite = isFavorite;
     }
 
-    public Game(String name, int yearOfRelease, boolean isFavorite, String cheats) {
+    public Game(String name, int yearOfRelease, boolean isFavorite, String cheatsRU, String cheatsEN) {
         this.name = name;
         this.yearOfRelease = yearOfRelease;
         this.isFavorite = isFavorite;
-        this.cheats = cheats;
+        this.cheatsRU = cheatsRU;
+        this.cheatsEN = cheatsEN;
     }
 
     private Game(Parcel in) {
         this.name = in.readString();
         this.yearOfRelease = in.readInt();
         this.isFavorite = (in.readInt() != 0);
-        this.cheats = in.readString();
+        this.cheatsRU = in.readString();
+        this.cheatsEN = in.readString();
     }
 
     public int describeContents() {
@@ -67,19 +70,28 @@ public class Game implements Parcelable {
         this.name = name;
     }
 
-    public String getCheats() {
-        return cheats;
+    public String getCheatsRU() {
+        return cheatsRU;
     }
 
-    public void setCheats(String cheats) {
-        this.cheats = cheats;
+    public void setCheatsRU(String cheatsRU) {
+        this.cheatsRU = cheatsRU;
+    }
+
+    public String getCheatsEN() {
+        return cheatsEN;
+    }
+
+    public void setCheatsEN(String cheatsEN) {
+        this.cheatsEN = cheatsEN;
     }
 
     public void writeToParcel(Parcel out, int flags) {
         out.writeString(name);
         out.writeInt(yearOfRelease);
         out.writeInt(isFavorite ? 1 : 0);
-        out.writeString(cheats);
+        out.writeString(cheatsRU);
+        out.writeString(cheatsEN);
     }
 
     public static final Parcelable.Creator<Game> CREATOR = new Parcelable.Creator<Game>() {

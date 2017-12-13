@@ -18,4 +18,6 @@
     <string name="unmarked_as_favorite">unmarked as favorite</string>
     <string name="error_input_cheats">You didn\'t fill all fields</string>
     <string name="adding_cheats">The game was added</string>
+    <string name="color_settings">Color settings</string>
+    <string name="no_favorite_games">You havn\'t any favorite games.</string>
 </resources>

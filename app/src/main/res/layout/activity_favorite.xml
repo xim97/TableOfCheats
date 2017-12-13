@@ -23,7 +23,7 @@
                 android:layout_weight="1"
                 android:onClick="onClickAddButton"
                 android:text="@string/add"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/gamesButton"
@@ -32,7 +32,7 @@
                 android:layout_weight="1"
                 android:onClick="onClickGamesButton"
                 android:text="@string/games"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/favoritesButton"
@@ -41,13 +41,14 @@
                 android:layout_weight="1"
                 android:onClick="onClickFavoritesButton"
                 android:text="@string/favorites"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:id="@+id/linearLayoutFavoriteGames">
 
             <ListView
                 android:id="@+id/favoriteGamesList"

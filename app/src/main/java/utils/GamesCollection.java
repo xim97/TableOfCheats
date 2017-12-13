@@ -15,4 +15,13 @@ public class GamesCollection {
         }
         return ans;
     }
+
+    public static ArrayList<Game> replaceGameInCollection(ArrayList<Game> games, Game game){
+        for(int i = 0; i < games.size(); i++){
+            if (games.get(i).getName().equals(game.getName()) && games.get(i).getYearOfRelease() == game.getYearOfRelease()){
+                games.set(i, game);
+            }
+        }
+        return games;
+    }
 }

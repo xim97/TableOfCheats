@@ -58,16 +58,6 @@ public class AddActivity extends AppCompatActivity {
                 || cheatsEdit.getText().toString().trim().isEmpty();
     }
 
-    public void onClickMusicButton(View view) {
-        Intent intent = new Intent(this, MusicService.class);
-        if (view.getId() == R.id.musicButtonStart){
-            startService(intent);
-        }
-        else{
-            stopService(intent);
-        }
-    }
-
     public void onClickAddButton(View view) {
         Intent intent = new Intent(this, AddActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
