@@ -22,6 +22,25 @@ public class Game implements Parcelable {
         this.isFavorite = isFavorite;
     }
 
+    public Game(String name, int yearOfRelease, String cheats, String language) {
+        this.name = name;
+        this.yearOfRelease = yearOfRelease;
+        this.isFavorite = false;
+        switch (language) {
+            case "ru": {
+                this.cheatsRU = cheats;
+                break;
+            }
+            case "en": {
+                this.cheatsEN = cheats;
+                break;
+            }
+            default: {
+                this.cheatsEN = cheats;
+            }
+        }
+    }
+
     public Game(String name, int yearOfRelease, boolean isFavorite, String cheatsRU, String cheatsEN) {
         this.name = name;
         this.yearOfRelease = yearOfRelease;

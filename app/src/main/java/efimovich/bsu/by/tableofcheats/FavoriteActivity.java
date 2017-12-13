@@ -13,10 +13,11 @@ import java.util.ArrayList;
 public class FavoriteActivity extends AppCompatActivity {
     private ArrayList<Game> favoriteGames = new ArrayList<>();
     private ListView favoriteGameList;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        final Context context = this;
+        context = this;
         super.onCreate(savedInstanceState);
         getSupportActionBar().setTitle(R.string.favorites);
         setContentView(R.layout.activity_favorite);
@@ -25,7 +26,10 @@ public class FavoriteActivity extends AppCompatActivity {
         } else {
             favoriteGames = savedInstanceState.getParcelableArrayList("favoriteGames");
         }
+        setGameAdapter();
+    }
 
+    private void setGameAdapter(){
         favoriteGameList = findViewById(R.id.favoriteGamesList);
         GameAdapter adapter = new GameAdapter(this, R.layout.list_of_games_item, favoriteGames);
         favoriteGameList.setAdapter(adapter);
@@ -38,7 +42,6 @@ public class FavoriteActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
     @Override
@@ -55,21 +58,10 @@ public class FavoriteActivity extends AppCompatActivity {
         favoriteGames = savedInstanceState.getParcelableArrayList("favoriteGames");
     }
 
-    public void onClickAddButton(View view) {
-        Intent intent = new Intent(this, AddActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        startActivity(intent);
-    }
-
     public void onClickGamesButton(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
     }
 
-    public void onClickFavoritesButton(View view) {
-        Intent intent = new Intent(this, FavoriteActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        startActivity(intent);
-    }
 }

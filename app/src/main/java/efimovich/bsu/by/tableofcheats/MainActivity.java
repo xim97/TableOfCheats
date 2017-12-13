@@ -18,25 +18,32 @@ import utils.GamesCollection;
 import utils.GamesComparator;
 
 public class MainActivity extends AppCompatActivity {
-    private ArrayList<Game> games = new ArrayList<>();
+    private static ArrayList<Game> games = new ArrayList<>();
     private ListView gamesList;
     private Intent musicIntent;
+    private static final int REQUEST_ACCESS_TYPE = 1;
+    private Context context;
+    static final String GAME = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        final Context context = this;
+        context = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().setTitle(R.string.games);
         musicIntent = new Intent(this, MusicService.class);
+
         if (savedInstanceState != null && savedInstanceState.containsKey("games")) {
             games = savedInstanceState.getParcelableArrayList("games");
         } else {
-            for (int i = 0; i < 20; i++) {
-                games.add(new Game("game" + i, i * 1000, false, "фывафывафыва" + i, "asdfasdf" + i));
-            }
+            createGames();
         }
         Collections.sort(games, new GamesComparator());
+
+        setGameAdapter();
+    }
+
+    public void setGameAdapter() {
         gamesList = findViewById(R.id.gamesList);
         GameAdapter adapter = new GameAdapter(this, R.layout.list_of_games_item, games);
         gamesList.setAdapter(adapter);
@@ -52,6 +59,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume(){
+        super.onResume();
+        Collections.sort(games, new GamesComparator());
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_ACCESS_TYPE) {
+            if (resultCode == RESULT_OK) {
+                Game addedGame = data.getParcelableExtra(GAME);
+                games.add(addedGame);
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+    @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putParcelableArrayList("games", games);
         super.onSaveInstanceState(outState);
@@ -61,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         games = savedInstanceState.getParcelableArrayList("games");
+        Collections.sort(games, new GamesComparator());
     }
 
     @Override
@@ -83,10 +109,16 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void createGames() {
+        for (int i = 0; i < 20; i++) {
+            games.add(new Game("game" + i, i * 1000, false, "фывафывафыва" + i, "asdfasdf" + i));
+        }
+    }
+
     public void onClickAddButton(View view) {
         Intent intent = new Intent(this, AddActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        startActivity(intent);
+        startActivityForResult(intent, REQUEST_ACCESS_TYPE);
     }
 
     public void onClickGamesButton(View view) {

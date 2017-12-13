@@ -6,20 +6,13 @@ import android.widget.TextView;
 
 public class CheatsActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cheats);
-        getSupportActionBar().setTitle(R.string.cheats);
-        Game currentGame = getIntent().getParcelableExtra("game");
+    private void setTextView(int resource, String text){
+        TextView textView = findViewById(resource);
+        textView.setText(text);
+    }
 
-        TextView textView = findViewById(R.id.nameView);
-        textView.setText(currentGame.getName());
-
-        textView = findViewById(R.id.yearView);
-        textView.setText(currentGame.getYearOfReleaseByString());
-
-        textView = findViewById(R.id.cheatsView);
+    private void setCheatsView(Game currentGame){
+        TextView textView = findViewById(R.id.cheatsView);
         switch (getResources().getConfiguration().locale.getLanguage()) {
             case "ru": {
                 textView.setText(currentGame.getCheatsRU());
@@ -34,5 +27,17 @@ public class CheatsActivity extends AppCompatActivity {
                 break;
             }
         }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_cheats);
+        getSupportActionBar().setTitle(R.string.cheats);
+        Game currentGame = getIntent().getParcelableExtra("game");
+
+        setTextView(R.id.nameView, currentGame.getName());
+        setTextView(R.id.yearView, currentGame.getYearOfReleaseByString());
+        setCheatsView(currentGame);
     }
 }
