@@ -17,6 +17,7 @@ public class FavoriteActivity extends AppCompatActivity {
     private ListView favoriteGameList;
     private Context context;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         context = this;
