@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(LOG_TAG, "on create");
         context = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -67,12 +68,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+        Log.d(LOG_TAG, "on resume");
         super.onResume();
         Collections.sort(games, new GamesComparator());
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d(LOG_TAG, "on favorite activity result");
         if (requestCode == REQUEST_ACCESS_TYPE) {
             if (resultCode == RESULT_OK) {
                 Game addedGame = data.getParcelableExtra(GAME);
@@ -86,12 +89,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
+        Log.d(LOG_TAG, "on save instance state");
         outState.putParcelableArrayList("games", games);
         super.onSaveInstanceState(outState);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        Log.d(LOG_TAG, "on restore instance state");
         super.onRestoreInstanceState(savedInstanceState);
         games = savedInstanceState.getParcelableArrayList("games");
         Collections.sort(games, new GamesComparator());
@@ -99,12 +104,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        Log.d(LOG_TAG, "on create options menu");
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Log.d(LOG_TAG, "on options item selected");
         int id = item.getItemId();
         switch (id) {
             case R.id.music_start: {
@@ -129,18 +136,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickAddButton(View view) {
+        Log.d(LOG_TAG, "on click add button");
         Intent intent = new Intent(this, AddActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivityForResult(intent, REQUEST_ACCESS_TYPE);
     }
 
     public void onClickGamesButton(View view) {
+        Log.d(LOG_TAG, "on click games button");
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
     }
 
     public void onClickFavoritesButton(View view) {
+        Log.d(LOG_TAG, "on click favorites button");
         ArrayList<Game> favoriteGamesToFavoriteActivity = GamesCollection.getFavoriteGames(games);
         if (favoriteGamesToFavoriteActivity.size() != 0) {
             Intent intent = new Intent(this, FavoriteActivity.class);

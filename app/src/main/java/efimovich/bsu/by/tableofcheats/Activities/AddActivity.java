@@ -18,12 +18,14 @@ public class AddActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(LOG_TAG, "on create");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
         getSupportActionBar().setTitle(R.string.add);
     }
 
     public void onClickAddCheatsButton(View view) {
+        Log.d(LOG_TAG, "on click add cheats button");
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         builder.setMessage(R.string.add_cheats_dialog_message)
@@ -91,12 +93,14 @@ public class AddActivity extends AppCompatActivity {
     }
 
     public void onClickAddButton(View view) {
+        Log.d(LOG_TAG, "on click add button");
         Intent intent = new Intent(this, AddActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
     }
 
     public void onClickGamesButton(View view) {
+        Log.d(LOG_TAG, "on click games button");
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
