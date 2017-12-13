@@ -9,19 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddActivity" />
-        <activity android:name=".FavoriteActivity" />
-        <activity android:name=".CheatsActivity" />
+        <activity android:name=".Activities.AddActivity" />
+        <activity android:name=".Activities.FavoriteActivity" />
+        <activity android:name=".Activities.CheatsActivity" />
 
         <service
-            android:name=".MusicService"
+            android:name=".Services.MusicService"
             android:enabled="true"
             android:exported="true" />
     </application>

@@ -1,8 +1,11 @@
-package efimovich.bsu.by.tableofcheats;
+package efimovich.bsu.by.tableofcheats.Activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+
+import efimovich.bsu.by.tableofcheats.Game;
+import efimovich.bsu.by.tableofcheats.R;
 
 public class CheatsActivity extends AppCompatActivity {
 

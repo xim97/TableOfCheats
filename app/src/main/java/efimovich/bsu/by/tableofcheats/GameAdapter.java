@@ -19,7 +19,7 @@ public class GameAdapter extends ArrayAdapter<Game> {
     private int layout;
     private ArrayList<Game> gameList;
 
-    GameAdapter(Context context, int resource, ArrayList<Game> games) {
+    public GameAdapter(Context context, int resource, ArrayList<Game> games) {
         super(context, resource, games);
         this.gameList = games;
         this.layout = resource;

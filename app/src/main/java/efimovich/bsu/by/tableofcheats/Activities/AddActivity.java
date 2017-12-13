@@ -1,15 +1,20 @@
-package efimovich.bsu.by.tableofcheats;
+package efimovich.bsu.by.tableofcheats.Activities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import efimovich.bsu.by.tableofcheats.Game;
+import efimovich.bsu.by.tableofcheats.R;
+
 public class AddActivity extends AppCompatActivity {
+    final String LOG_TAG = "Add Activity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +31,7 @@ public class AddActivity extends AppCompatActivity {
 
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
+                Log.d(LOG_TAG, "trying to add new game");
                 EditText nameEdit = findViewById(R.id.nameEdit);
                 EditText yearEdit = findViewById(R.id.yearEdit);
                 EditText cheatsEdit = findViewById(R.id.cheatsEdit);
@@ -62,6 +68,7 @@ public class AddActivity extends AppCompatActivity {
         String cheats = cheatsEdit.getText().toString().trim();
         Game game = new Game(name, year, cheats, getResources().getConfiguration().locale.getLanguage());
 
+        Log.d(LOG_TAG, "sending game to main activity");
         Intent data = new Intent();
         data.putExtra(MainActivity.GAME, game);
         setResult(RESULT_OK, data);

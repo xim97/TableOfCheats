@@ -1,4 +1,4 @@
-package efimovich.bsu.by.tableofcheats;
+package efimovich.bsu.by.tableofcheats.Activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+
+import efimovich.bsu.by.tableofcheats.Activities.CheatsActivity;
+import efimovich.bsu.by.tableofcheats.Activities.MainActivity;
+import efimovich.bsu.by.tableofcheats.Game;
+import efimovich.bsu.by.tableofcheats.GameAdapter;
+import efimovich.bsu.by.tableofcheats.R;
 
 public class FavoriteActivity extends AppCompatActivity {
     private ArrayList<Game> favoriteGames = new ArrayList<>();

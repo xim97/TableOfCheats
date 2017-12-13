@@ -1,9 +1,10 @@
-package efimovich.bsu.by.tableofcheats;
+package efimovich.bsu.by.tableofcheats.Activities;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +15,10 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import efimovich.bsu.by.tableofcheats.Game;
+import efimovich.bsu.by.tableofcheats.GameAdapter;
+import efimovich.bsu.by.tableofcheats.Services.MusicService;
+import efimovich.bsu.by.tableofcheats.R;
 import utils.GamesCollection;
 import utils.GamesComparator;
 
@@ -24,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_ACCESS_TYPE = 1;
     private Context context;
     static final String GAME = "";
+    final String LOG_TAG = "Main Activity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setGameAdapter() {
+        Log.d(LOG_TAG, "setting game adapter");
         gamesList = findViewById(R.id.gamesList);
         GameAdapter adapter = new GameAdapter(this, R.layout.list_of_games_item, games);
         gamesList.setAdapter(adapter);
@@ -70,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 Game addedGame = data.getParcelableExtra(GAME);
                 games.add(addedGame);
+                Log.d(LOG_TAG, "Getting new game");
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
@@ -99,17 +107,22 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
-            case R.id.music_start:
+            case R.id.music_start: {
                 startService(musicIntent);
+                Log.d(LOG_TAG, "starting music service");
                 return true;
-            case R.id.music_stop:
+            }
+            case R.id.music_stop: {
                 stopService(musicIntent);
+                Log.d(LOG_TAG, "stopping music service");
                 return true;
+            }
         }
         return super.onOptionsItemSelected(item);
     }
 
     public void createGames() {
+        Log.d(LOG_TAG, "Creating games for first start");
         for (int i = 0; i < 20; i++) {
             games.add(new Game("game" + i, i * 1000, false, "фывафывафыва" + i, "asdfasdf" + i));
         }
